@@ -1,2 +1,2 @@
 # Jasypt-encryption
-Encrypt and decrypt
+Encrypt and decrypt with Jasypt Example
