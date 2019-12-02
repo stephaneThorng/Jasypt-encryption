@@ -1,0 +1,49 @@
+package sthorng.launch;
+
+import java.util.HashMap;
+import java.util.Map;
+import org.apache.commons.lang3.tuple.Pair;
+import sthorng.core.JasyptHelper;
+
+public class Launcher {
+
+  public static void main(String[] args) {
+    toEncrypt();
+  }
+
+  private static void toEncrypt() {
+    Map<String, Pair<String, String>> maps = new HashMap();
+    String name = "key1";
+    String secret = "P@ssw0rd!";
+    String message = "hello world !";
+    maps.put(name, Pair.of(message, secret));
+    maps.forEach((key, value) -> {
+      String encrypted = JasyptHelper.encrypt(key, value);
+
+      JasyptHelper.decrypt(name, Pair.of(encrypted, secret));
+    });
+  }
+
+
+
+  private static void toDecrypt() {
+    Map<String, Pair<String, String>> maps = new HashMap();
+    // name, key, password
+    maps.put("public-docusign", Pair.of(
+        "ENC(XYaXNNKcsUFsy1fxRsc+1+jrMR2W3YTpTf9WwN6rn1c6JiNOqaQgm/e6cuGIGBdETTT1zp4gffi9QGhv8tuFbjsMoQyZQVRUi22EonSzZ4Q9oyNPfwLo1at3ixAinQ761kOw+NSfIrm/th4BOLPNBd69dUoSOziTkoyKjjC4k+rueLlmHURx/FG5gsZ6RWQO3Ng871HuLHKHgRWGmGNaPT2A2+O3qHC/mHWn74aSryohfwthlflapHIy1wGooLjHWDRBwCBcicFghU4UpC/N3T+L14oZTwaUv1mgpU3LqLToDmxzaS+f0HHCmhaGmf4n/ykVKBzMlnjxipZ9afjs5GP/6syFUzCHlE0v+EkfO/xS751mz/YBnuSF8S16bMqdNRLn+HtCq+xtWq64+c6nxxQ+8jgdDTII/QXg+f13hCArrNUPBhAqNS40+MYOf5NLjevG11opaAsk01upsZsV0JlUiQ+aMtRjapRQ9GaFpehNgywaP2vHtbzuoVsaMrxM7mUsk9zrm7WvFU24Zsgqn+2C+64NOpNPuEEjG3hvVUWLg/bd8auT74gMlBqTaUEeS8/cmUdlJb3y48/dPBYw1po7zsnWsX+xQyXF7e5eCMICHc8BW7+vmA==)",
+        "password"));
+    maps.put("private-docusign", Pair.of(
+        "ENC(E0e9DLNQuoxk88FMeAlaFkYV4v0dzXxsrgHJG6RFV+PpVZD2fu+bXpwLDQ1bcHjbqJHgWCBAcCxCFLwRFwuaPjUst0YipuBKKq3hDm/8M6hNFpGsIRJa904sZg3Jl8Q3vw5arE5NpZ5vsR+AkhkSCuhXjOicpKZb2rcfB6TlIhWMpDUq616NDu1DXC6tKee5DDyL5ZH/j+c1b8fCCxogfHOqXOaVT4m/1iI4H5ShkBzsdvqQTfzpA883SXlJFw9u6yxd9rdb8PTzZb/1EpXuM5NjfR73qbZwnFQjbFQrXwsWtUDzlyDvTsmghIyP0sis3WgJAziae2qHiMVI18FzOUYJJ7X1WDazS3JRVBiJjVQb8HBWGr5N+RAffyVGbD6RRhUT/1zww30yHDj4c5n98Wme9zdR+bGgEelZ0HD+wNHL7KudD3Sf7NoARTP9/RXwzHUzVHxsPP6gmueszFjgnwDOzfcN2G9CJHd+5PFvv6QYrsPzxrsHIT1JG3KTiu6J3ZyMAyz51YhKdbKwPm2fbYOSCfV4WpLL94lgWnhvC44p+nG4b8PR3uysAAlSzGaX/wgmxS0K+rbDvEQp1qjSUrdcXFtN0shLHGhVxUPeXJ0VM5TzRbv2/IlqMuC7xuueIwrGuUQggd9mHoDVjTvF71rJYbSRiZ3Jz+lhhcbbRtO9LWfYzRyN8lJQh7zDcbfrsesDTDlk1KYWxfAoBoQSKebUxna+4I1jdl8QC09SZ1fsFF0YIfULWrBjEjpT1Ef72RsB5VCzU8Rxl1OCdmr0ha+V/t7YcPrDLXVBBAe7iZ4L/FCjjguDo7CNGLAu7PAeI57Smcgn7EUSPdJyg2FksxdF2IFruUxtB3rDm+67fImMJO7b7ea1r8ZJ2vfjICUsjZOBDZ+AVHUUNiT/Qv3DUfuAWflbgOItMTGtIvOqWSRnLCabpK4OHDd0bKKRjC1w1PgE1dzrHiUDIx/6xuqkcBO71hUYjAZHh2v67gwoCoNvMfdsPCuVAsCeTmK1LEQ/Nd2CmycrfJyJoQUw6Ip2PDL21NI3+5E8njc5OR7XaV7FBnAb8pSDaIJ8cMF7Jwto/8n/niybaCNeYDQmwR5Uk+khK2bSc6ZqrtcVhJKit3ti8e6MWdfGVusRmQqL3b+7oAnd4nAoJeuk6Af1HXr58ZFjamJ050uG6iV52nRH+QQh4mQVfXud/9Y8PvmUxTVH9vYwvMz5bG6qNbZFYIfgVdrRR5oEpYCpBcaVvXS3lPqmHlSsHJNMdVRJ2/JLBUvFDNGgKL2Bgr9NP4945OMMKfkUNBA8EZr3Zbmb0krwe0hN+9370/VSlystZ9G2kwtDn8ROIRFsQ8eVoltzlDocyUl9YASmMAimYxgStWwT1ERkhVgso1qGWzcZPe//xr8LDQ3Jk9X6f66dPuxY7pucaIRSEp8HNof/5Nta2Gm3TfoSz2Y0PLKE2LMmDRZ6fK8xTeOI91EK44thRgNJ2RsFtvzDoRiVtl0k1w8+UUES2dCVjxW6KJFBIzs9W4CkdE0mBgPFCBAwCVTon5Yb0XlDX/d6uoaBmF90GtZTUnkUXNn27ExIecUyXeyuA+EUONcHY+PcIUJSbNXlzy82+a5ECurUJqIVKHevhXUpStYF1D2b4dXLo7KhY9/odFvEPg4DuSA+rTJ6Ne7f7VC9dPnwtJufuMgqY+QFm3jz3oZj+ZWZK1Apj+YxwyInjf3UjBzPBc1XvHsoOK8U9H3C5zqa3b0qUOGIRkxujY92CWcjdB6SrWlOX0vpbiHJjTgW5saZDfV2AJgLpLH27NV6lmCUUZpNo73ADdx8buR11k4h7mnt7eWQQBVOk6o5VBX4eUl92TZqO8s8GcbWfiiSWUpsrfrW067Y7Ks3YED93YCU7AiM4XWbeegnyThmFXothGEYQhJvsgxIKBkb/3bNAJOC9sYfwP9M/Ayfy0uLSI6ytuNp2gqAj07oFHP0xFHY29ePQheXEsSKRwADexhsHaYP2u40Gt9C5QCwRth449aDfldRawfQa5kjvqUir/ygiNCMJ4/lEkloNtgJnObIG0eGWGU3CFaH5Lzz3np4AWx21Q2MSZHNX8ug1/5JWPVb5ZARjnd+jYzvYm0W9LTKOZdmDkzZQP9mJXf0OTb+ZnHsTcE09IzladxvPgNXGfPi1DwfstseW0RKLYIKyMs0TGIpY/s7j8QEH1K/HMDNhlYSJ0QxXpjlDIdPYEVMvK+EKBOforFftjt/jR3hCtRArXiPcPeQQkJY/XPzO4ktGwJdmME=)",
+        "password"));
+
+    maps.put("private-docusign", Pair.of(
+        "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",
+        "password"));
+
+    maps.forEach((key, value) -> {
+      JasyptHelper.decrypt(key, value);
+    });
+  }
+
+
+}
